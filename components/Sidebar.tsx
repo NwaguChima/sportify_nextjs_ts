@@ -1,6 +1,8 @@
 import React from "react";
 
-const Sidebar = () => {
+interface SidebarProps {}
+
+const Sidebar: React.FC<SidebarProps> = () => {
   return <div>Sidebar</div>;
 };
 
