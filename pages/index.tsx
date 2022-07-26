@@ -4,7 +4,7 @@ import Dashboard from "../components/Dashboard";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="">
       <Head>
         <title>Spotify - Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
