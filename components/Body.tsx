@@ -1,12 +1,13 @@
 import React from "react";
+import { Search } from "./Search";
 
 interface BodyProps {}
 
 const Body: React.FC<BodyProps> = ({}) => {
   return (
-    <div>
-      <h1>Body</h1>
-    </div>
+    <section>
+      <Search />
+    </section>
   );
 };
 
