@@ -5,7 +5,7 @@ interface BodyProps {}
 
 const Body: React.FC<BodyProps> = ({}) => {
   return (
-    <section>
+    <section className="">
       <Search />
     </section>
   );
