@@ -16,6 +16,14 @@ export const Search: React.FC<SearchProps> = ({ search, setSearch }) => {
         className="text-white border-none bg-[#1a1a1a] lg:w-full focus:ring-0 outline-none placeholder-[#fafafa] text-xs"
         placeholder="Search..."
       />
+
+      <div className="flex items-center ">
+        <div className="flex space-x-2 pr-5">
+          <button className="tag">Minimal</button>
+          <button className="tag">House</button>
+          <button className="tag">Maximal</button>
+        </div>
+      </div>
     </div>
   );
 };
