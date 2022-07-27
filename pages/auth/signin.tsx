@@ -1,13 +1,21 @@
+import { useEffect } from "react";
 import { getProviders, signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
-
-interface SigninProps {
-  providers: any;
-}
+import { useRouter } from "next/router";
+import { Loader } from "../../components/Loader";
 
 const Signin = ({ providers }: any) => {
   const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (session) {
+      router.push("/");
+    }
+  }, [session]);
+
+  if (session) return <Loader />;
 
   return (
     <div className="bg-black h-screen flex flex-col items-center pt-40 space-y-8">
