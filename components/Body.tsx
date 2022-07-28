@@ -88,6 +88,23 @@ const Body: React.FC<BodyProps> = ({ spotifyApi, chooseTrack }) => {
                 />
               ))}
       </div>
+
+      <div className="flex gap-x-8 absolute min-w-full md:relative ml-6">
+        <div className="hidden xl:inline max-w-[270px]">
+          <h2 className="text-white font-bold mb-3">Genres</h2>
+          <div className="flex gap-x-2 gap-y-2.5 flex-wrap mb-3">
+            <div className="genre">Classic</div>
+            <div className="genre">Rock</div>
+            <div className="genre">Pop</div>
+            <div className="genre">Hip Hop</div>
+            <div className="genre">R&B</div>
+            <div className="genre">Jazz</div>
+            <div className="genre">Country</div>
+            <div className="genre">Electronic</div>
+            <div className="genre">Folk</div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
