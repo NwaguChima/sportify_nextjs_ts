@@ -6,9 +6,10 @@ import { Search } from "./Search";
 
 interface BodyProps {
   spotifyApi: SpotifyWebApi;
+  chooseTrack: (track: any) => void;
 }
 
-const Body: React.FC<BodyProps> = ({ spotifyApi }) => {
+const Body: React.FC<BodyProps> = ({ spotifyApi, chooseTrack }) => {
   const { data: session } = useSession();
   const accessToken = session?.accessToken;
 
@@ -68,20 +69,24 @@ const Body: React.FC<BodyProps> = ({ spotifyApi }) => {
       <Search search={search} setSearch={setSearch} />
       <div className="grid overflow-y-scroll scrollbar-hide h-96 py-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8 p-4">
         {searchResults.length === 0
-          ? newReleases.slice(0, 4).map((track) => (
-              <Poster
-                key={track.id}
-                track={track}
-                // chooseTrack={chooseTrack}
-              />
-            ))
-          : searchResults.slice(0, 4).map((track) => (
-              <Poster
-                key={track.id}
-                track={track}
-                // chooseTrack={chooseTrack}
-              />
-            ))}
+          ? newReleases
+              .slice(0, 4)
+              .map((track: any) => (
+                <Poster
+                  key={track.id}
+                  track={track}
+                  chooseTrack={chooseTrack}
+                />
+              ))
+          : searchResults
+              .slice(0, 4)
+              .map((track: any) => (
+                <Poster
+                  key={track.id}
+                  track={track}
+                  chooseTrack={chooseTrack}
+                />
+              ))}
       </div>
     </section>
   );
