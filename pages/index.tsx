@@ -7,8 +7,8 @@ import { Loader } from "../components/Loader";
 
 const Home: NextPage = () => {
   const router = useRouter();
-  // @ts-ignore
   const { status, data: session } = useSession<boolean>({
+    required: true,
     onUnauthenticated() {
       router.push("/auth/signin");
     },
