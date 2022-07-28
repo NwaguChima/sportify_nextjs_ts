@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
 import Poster from "./Poster";
 import { Search } from "./Search";
+import { Track } from "./Track";
 
 interface BodyProps {
   spotifyApi: SpotifyWebApi;
@@ -115,7 +116,7 @@ const Body: React.FC<BodyProps> = ({ spotifyApi, chooseTrack }) => {
             {searchResults.length === 0
               ? newReleases
                   .slice(4, newReleases.length)
-                  .map((track) => (
+                  .map((track: any) => (
                     <Track
                       key={track.id}
                       track={track}
@@ -124,7 +125,7 @@ const Body: React.FC<BodyProps> = ({ spotifyApi, chooseTrack }) => {
                   ))
               : searchResults
                   .slice(4, searchResults.length)
-                  .map((track) => (
+                  .map((track: any) => (
                     <Track
                       key={track.id}
                       track={track}
