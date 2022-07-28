@@ -5,3 +5,5 @@ export type IProvider = {
   signinUrl: string;
   type: string;
 };
+
+// export interface UseSessionOptions<boolean>.onUnauthenticated?: (() => void) | undefined
