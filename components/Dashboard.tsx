@@ -19,7 +19,7 @@ export const Dashboard: React.FC<DashboardProps> = ({}) => {
     setPlayingTrack(track);
   };
   return (
-    <main>
+    <main className="flex max-h-screen min-w-max bg-black lg:pb-24">
       <Sidebar />
       <Body spotifyApi={spotifyApi} chooseTrack={chooseTrack} />
       <Right />
