@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import RecentlyPlayed from "./RecentlyPlayed";
 import { HiOutlineShieldCheck } from "react-icons/hi";
 import { MdOutlineSettings } from "react-icons/md";
 import { BiBell } from "react-icons/bi";
@@ -35,6 +36,8 @@ const Right: React.FC<RightProps> = ({ spotifyApi, chooseTrack }) => {
     });
   }, [accessToken]);
 
+  console.log("recentlyPlayed", recentlyPlayed);
+
   return (
     <section className="p-4 space-y-8 pr-8">
       <div className="flex space-x-2 items-center justify-between">
@@ -57,9 +60,14 @@ const Right: React.FC<RightProps> = ({ spotifyApi, chooseTrack }) => {
 
         <div className="space-y-4 overflow-y-scroll overflow-x-hidden h-[250px] md:h-[400px] scrollbar-hide">
           {recentlyPlayed.map((track: any, index) => (
-            <RecentlyPlayed />
+            <RecentlyPlayed
+              key={index}
+              track={track}
+              chooseTrack={chooseTrack}
+            />
           ))}
         </div>
+        <button className="btn">View All</button>
       </div>
     </section>
   );
