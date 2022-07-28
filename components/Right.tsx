@@ -55,7 +55,11 @@ const Right: React.FC<RightProps> = ({ spotifyApi, chooseTrack }) => {
           <ViewGridIcon className="text-[#686868] h-6" />
         </div>
 
-        <div className="space-y-4 overflow-y-scroll overflow-x-hidden h-[250px] md:h-[400px] scrollbar-hide"></div>
+        <div className="space-y-4 overflow-y-scroll overflow-x-hidden h-[250px] md:h-[400px] scrollbar-hide">
+          {recentlyPlayed.map((track: any, index) => (
+            <RecentlyPlayed />
+          ))}
+        </div>
       </div>
     </section>
   );
