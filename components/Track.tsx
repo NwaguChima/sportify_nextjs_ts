@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { ImHeadphones } from "react-icons/im";
 import { AiFillHeart } from "react-icons/ai";
+import { useRecoilState } from "recoil";
+import { playingTrackState, playState } from "../atom/playerAtom";
+import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
 
 interface TrackProps {
   track: any;
@@ -9,6 +12,17 @@ interface TrackProps {
 
 export const Track: React.FC<TrackProps> = ({ track, chooseTrack }) => {
   const [hasLiked, setHasLiked] = React.useState<boolean>(false);
+  const [play, setPlay] = useRecoilState(playState);
+  const [playingTrack, setPlayingTrack] =
+    useRecoilState<any>(playingTrackState);
+
+  const handlePlay = () => {
+    chooseTrack(track);
+
+    if (track.uri === playingTrack.uri) {
+      setPlay(!play);
+    }
+  };
 
   return (
     <div className="flex items-center justify-between space-x-20 cursor-default hover:bg-white/10 py-2 px-4 rounded-lg group transition ease-out">
@@ -39,6 +53,25 @@ export const Track: React.FC<TrackProps> = ({ track, chooseTrack }) => {
               }`}
               onClick={() => setHasLiked(!hasLiked)}
             />
+            {track.uri === playingTrack.uri && play ? (
+              <>
+                <div
+                  className="h-10 w-10 rounded-full border border-[#15883e] flex items-center justify-center absolute -right-0.5 bg-[#15883e] icon hover:scale-110"
+                  onClick={handlePlay}
+                >
+                  <BsFillPauseFill className="text-white text-xl" />
+                </div>
+              </>
+            ) : (
+              <>
+                <div
+                  className="h-10 w-10 rounded-full border border-white/60 flex items-center justify-center absolute -right-0.5 hover:bg-[#15883e] hover:border-[#15883e] icon hover:scale-110"
+                  onClick={handlePlay}
+                >
+                  <BsFillPlayFill className="text-white text-xl ml-[1px]" />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
