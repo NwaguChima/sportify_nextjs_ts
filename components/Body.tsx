@@ -13,7 +13,7 @@ const Body: React.FC<BodyProps> = ({ spotifyApi }) => {
 
   const [search, setSearch] = useState<string>("");
   const [searchResults, setSearchResults] = useState<any>([]);
-  const [newReleases, setNewReleases] = useState<string[]>([]);
+  const [newReleases, setNewReleases] = useState<any>([]);
 
   useEffect(() => {
     if (!accessToken) return;
@@ -43,7 +43,24 @@ const Body: React.FC<BodyProps> = ({ spotifyApi }) => {
     });
   }, [search, accessToken]);
 
-  console.log("searchResults", searchResults);
+  // for new releases
+  useEffect(() => {
+    if (!accessToken) return;
+
+    spotifyApi.getNewReleases().then((res) => {
+      setNewReleases(
+        res.body.albums?.items.map((track) => {
+          return {
+            id: track.id,
+            artist: track.artists[0].name,
+            title: track.name,
+            uri: track.uri,
+            albumUrl: track.images[0].url,
+          };
+        })
+      );
+    });
+  }, [search, accessToken]);
 
   return (
     <section className="bg-black ml-24 py-4 space-y-8 md:max-w-6xl  flex-grow md:mr-2.5">
