@@ -90,6 +90,7 @@ const Body: React.FC<BodyProps> = ({ spotifyApi, chooseTrack }) => {
       </div>
 
       <div className="flex gap-x-8 absolute min-w-full md:relative ml-6">
+        {/* Genres */}
         <div className="hidden xl:inline max-w-[270px]">
           <h2 className="text-white font-bold mb-3">Genres</h2>
           <div className="flex gap-x-2 gap-y-2.5 flex-wrap mb-3">
@@ -102,6 +103,34 @@ const Body: React.FC<BodyProps> = ({ spotifyApi, chooseTrack }) => {
             <div className="genre">Country</div>
             <div className="genre">Electronic</div>
             <div className="genre">Folk</div>
+          </div>
+          <button className="btn">All Genres</button>
+        </div>
+        {/* Tracks */}
+        <div>
+          <h2 className="text-white font-bold mb-3">
+            {searchResults.length === 0 ? "New Releases" : "Tracks"}
+          </h2>
+          <div className="space-y-3 border-2 border-[#262626] rounded-2xl p-3 bg-[#0D0D0D] overflow-y-scroll h-[1000px] md:h-96 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-thumb-rounded hover:scrollbar-thumb-gray-500 w-[830px]">
+            {searchResults.length === 0
+              ? newReleases
+                  .slice(4, newReleases.length)
+                  .map((track) => (
+                    <Track
+                      key={track.id}
+                      track={track}
+                      chooseTrack={chooseTrack}
+                    />
+                  ))
+              : searchResults
+                  .slice(4, searchResults.length)
+                  .map((track) => (
+                    <Track
+                      key={track.id}
+                      track={track}
+                      chooseTrack={chooseTrack}
+                    />
+                  ))}
           </div>
         </div>
       </div>
