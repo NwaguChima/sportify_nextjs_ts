@@ -19,7 +19,7 @@ export const Dashboard: React.FC<DashboardProps> = ({}) => {
   const accessToken = session?.accessToken;
   const [playingTrack, setPlayingTrack] =
     useRecoilState<any>(playingTrackState);
-  const [showPlayer, setShowPlayer] = useState(false);
+  const [showPlayer, setShowPlayer] = useState<boolean>(false);
 
   useEffect(() => {
     setShowPlayer(true);

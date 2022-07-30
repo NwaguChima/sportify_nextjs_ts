@@ -1,11 +1,12 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { playingTrackState, playState } from "../atom/playerAtom";
+import { MusicItem } from "../utils/types";
 import { Track } from "./Track";
 
 interface RecentlyPlayedProps {
-  track: any;
-  chooseTrack: any;
+  track: MusicItem;
+  chooseTrack: (track: any) => void;
 }
 
 const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({

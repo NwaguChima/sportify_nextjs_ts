@@ -13,6 +13,7 @@ import { MdOutlineSpeaker } from "react-icons/md";
 import { BiShuffle } from "react-icons/bi";
 import { IoRepeatOutline } from "react-icons/io5";
 import { CgArrowsExpandRight } from "react-icons/cg";
+import { MusicItem } from "../utils/types";
 
 interface PlayerProps {
   accessToken: any;

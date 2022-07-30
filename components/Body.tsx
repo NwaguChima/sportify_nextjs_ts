@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
+import { MusicItem } from "../utils/types";
 import Poster from "./Poster";
 import { Search } from "./Search";
 import { Track } from "./Track";
@@ -15,8 +16,8 @@ const Body: React.FC<BodyProps> = ({ spotifyApi, chooseTrack }) => {
   const accessToken = session?.accessToken;
 
   const [search, setSearch] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<any>([]);
-  const [newReleases, setNewReleases] = useState<any>([]);
+  const [searchResults, setSearchResults] = useState<MusicItem[] | []>([]);
+  const [newReleases, setNewReleases] = useState<MusicItem[] | []>([]);
 
   useEffect(() => {
     if (!accessToken) return;
@@ -30,9 +31,11 @@ const Body: React.FC<BodyProps> = ({ spotifyApi, chooseTrack }) => {
     if (!search) return setSearchResults([]);
     if (!accessToken) return;
 
-    spotifyApi.searchTracks(search).then((res) => {
+    spotifyApi.searchTracks(search).then((res: any) => {
+      console.log("searchResults", res);
+
       setSearchResults(
-        res.body.tracks?.items.map((track) => {
+        res.body.tracks?.items.map((track: any) => {
           return {
             id: track.id,
             artist: track.artists[0].name,

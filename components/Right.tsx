@@ -6,6 +6,7 @@ import { BiBell } from "react-icons/bi";
 import { ViewGridIcon } from "@heroicons/react/solid";
 import Dropdown from "./Dropdown";
 import { useSession } from "next-auth/react";
+import { MusicItem } from "../utils/types";
 
 interface RightProps {
   spotifyApi: any;
@@ -15,7 +16,7 @@ interface RightProps {
 const Right: React.FC<RightProps> = ({ spotifyApi, chooseTrack }) => {
   const { data: session } = useSession();
   const accessToken = session?.accessToken;
-  const [recentlyPlayed, setRecentlyPlayed] = useState([]);
+  const [recentlyPlayed, setRecentlyPlayed] = useState<MusicItem[] | []>([]);
 
   // Recently Played Tracks...
   useEffect(() => {
