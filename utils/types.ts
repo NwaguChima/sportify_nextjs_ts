@@ -24,4 +24,12 @@ export type MusicItem = {
   uri: string;
 };
 
+export type Provider = {
+  id: string;
+  name: string;
+  type: string;
+  signinUrl: string;
+  callbackUrl: string;
+};
+
 // export interface UseSessionOptions<boolean>.onUnauthenticated?: (() => void) | undefined

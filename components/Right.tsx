@@ -37,8 +37,6 @@ const Right: React.FC<RightProps> = ({ spotifyApi, chooseTrack }) => {
     });
   }, [accessToken]);
 
-  console.log("recentlyPlayed", recentlyPlayed);
-
   return (
     <section className="p-4 space-y-8 pr-8">
       <div className="flex space-x-2 items-center justify-between">
